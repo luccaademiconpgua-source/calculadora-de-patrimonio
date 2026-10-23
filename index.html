@@ -6,7 +6,7 @@
   no todo ou em parte, sem autorização prévia e por escrito. Lei nº 9.609/1998 e Lei nº 9.610/1998.
   Contato para licenciamento: lucca.ribeiro@autorizadoademicon.com.br
 -->
-<html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<html lang="pt-BR"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Calculadora Patrimonial ARVIA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 :root{
   color-scheme:dark;
   --bg:#1A0509; --bg2:#25070D; --panel:rgba(255,248,235,.035); --panel-b:rgba(225,193,106,.16);
-  --ink:#F5F1E8; --muted:#B8A69E; --dim:#7E6A66; --line:rgba(245,241,232,.09);
+  --ink:#F5F1E8; --muted:#B8A69E; --dim:#A08C86; --line:rgba(245,241,232,.09);
   --gold:#C6A04A; --gold-hi:#E1C16A; --wine:#4A0D18; --wine-hi:#6B1626;
   --good:#8CCB9F; --warn:#E7BE63; --bad:#EE9090;
   --display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -62,8 +62,8 @@ body{background:
 @media (max-width:920px){.app{grid-template-columns:1fr}}
 .controls{display:grid;gap:14px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px 20px 8px;backdrop-filter:blur(6px)}
-.card h3{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
-.card h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.card h3,.card .card-t{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.card h3::after,.card .card-t::after{content:"";flex:1;height:1px;background:var(--line)}
 .only[hidden]{display:none!important}
 .card.only{animation:rise .45s ease both}
 @keyframes rise{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -121,7 +121,7 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(
 
 .chart-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 18px 12px}
 .chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-.chart-head h4{margin:0;font-family:var(--display);font-size:22px;font-weight:600}
+.chart-head h3,.chart-head h4{margin:0;font-family:var(--display);font-size:22px;font-weight:600}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)}
 .legend span{display:flex;align-items:center;gap:6px}
 .legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
@@ -133,7 +133,7 @@ svg .lbl-g{fill:var(--gold-hi);font:700 12px var(--body)}
 .path-anim{transition:d .5s cubic-bezier(.2,.8,.2,1)}
 
 .compare{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
-.compare h4{margin:0 0 14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.compare h3,.compare h4{margin:0 0 14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
 .bar{margin-bottom:14px}
 .bar:last-of-type{margin-bottom:0}
 .bar .t{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;margin-bottom:7px;color:var(--muted)}
@@ -193,11 +193,11 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
 
 <div class="wrap">
   <header class="top">
-    <div class="logo"><div class="mark"><span>A</span></div><div><b>ARVIA</b><small>Capital</small></div></div>
+    <div class="logo"><div class="mark" aria-hidden="true"><span>A</span></div><div><b>ARVIA</b><small>Capital</small></div></div>
     <div class="top-cta">Lucca Antunes<strong>Parceiro autorizado Ademicon</strong></div>
   </header>
 
-  <section class="hero">
+  <section class="hero" aria-label="Apresentação">
     <div class="eyebrow">Calculadora patrimonial</div>
     <h1>Seu consórcio também pode ser <em>investimento</em></h1>
     <p>Arraste os controles e veja na hora quanto a carta rende vendida com ágio, usada para comprar um imóvel que se paga com o aluguel ou com o crédito aplicado no CDI até o fim do plano.</p>
@@ -212,23 +212,23 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
   <main class="app">
     <div class="controls" id="controls">
       <div class="card">
-        <h3>Sua carta</h3>
+        <h2 class="card-t">Sua carta</h2>
         <div id="g-carta"></div>
       </div>
       <div class="card">
-        <h3>Contemplação</h3>
+        <h2 class="card-t">Contemplação</h2>
         <div id="g-contemp"></div>
       </div>
       <div class="card only" id="card-venda">
-        <h3>Venda e comparação</h3>
+        <h2 class="card-t">Venda e comparação</h2>
         <div id="g-venda"></div>
       </div>
       <div class="card only" id="card-imovel" hidden>
-        <h3>O imóvel</h3>
+        <h2 class="card-t">O imóvel</h2>
         <div id="g-imovel"></div>
       </div>
       <div class="card only" id="card-cdi" hidden>
-        <h3>Crédito aplicado</h3>
+        <h2 class="card-t">Crédito aplicado</h2>
         <div id="g-cdi"></div>
       </div>
       <button class="reset" id="reset" type="button">Restaurar valores de exemplo</button>
@@ -248,14 +248,14 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
 
       <div class="chart-card">
         <div class="chart-head">
-          <h4 id="chart-title">Evolução até a venda</h4>
+          <h3 id="chart-title">Evolução até a venda</h3>
           <div class="legend" id="legend"></div>
         </div>
         <svg class="chart" id="chart" viewBox="0 0 640 260" role="img" aria-label="Gráfico da evolução do investimento"></svg>
       </div>
 
       <div class="compare">
-        <h4 id="cmp-title">Consórcio vs aplicação financeira</h4>
+        <h3 id="cmp-title">Consórcio vs aplicação financeira</h3>
         <div class="bar"><div class="t"><span id="b1l"></span><b id="b1v"></b></div><div class="track"><div class="fill a" id="b1"></div></div></div>
         <div class="bar"><div class="t"><span id="b2l"></span><b id="b2v"></b></div><div class="track"><div class="fill b" id="b2"></div></div></div>
         <div class="delta" id="delta"></div>
@@ -270,7 +270,7 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
   </main>
 </div>
 
-<section class="cta">
+<section class="cta" aria-label="Fale com o consultor">
   <div class="wrap">
     <div>
       <div class="eyebrow">Próximo passo</div>
@@ -286,9 +286,9 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
   </div>
 </section>
 
-<footer class="wrap disclaimer">
+<aside class="wrap disclaimer" aria-label="Aviso sobre a simulação">
   <b>Simulação, não promessa.</b> Os resultados são projeções a partir dos dados preenchidos nesta tela. Cada grupo tem regras próprias de lance (forma, limite e base de cálculo), índice de correção e parcela reduzida. O mês da contemplação depende do grupo e não é garantido. Ágio, aluguel, valorização e CDI variam com o mercado, e a liberação do crédito em dinheiro depende das regras da administradora. Confirme sempre as condições no regulamento do grupo e na proposta oficial da Ademicon. Nada aqui constitui garantia de resultado, oferta ou recomendação de investimento.
-</footer>
+</aside>
 <!-- Rodapé legal -->
 <footer class="lgl-foot" style="max-width:1180px;margin:0 auto;padding:0 max(18px, env(safe-area-inset-left, 0px)) calc(110px + env(safe-area-inset-bottom,0px));font:12px/1.6 'Montserrat',system-ui,sans-serif;color:inherit;opacity:.82;text-align:center">
   <p style="margin:0 0 6px"><strong>ARVIA Capital</strong> · A&amp;R Assessoria Estratégica Ltda. · CNPJ 63.972.524/0001-64 · Parceiro autorizado Ademicon · lucca.ribeiro@autorizadoademicon.com.br · WhatsApp (41) 98840-2942</p>
