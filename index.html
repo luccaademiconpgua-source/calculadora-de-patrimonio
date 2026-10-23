@@ -8,6 +8,10 @@
 -->
 <html lang="pt-BR"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Calculadora Patrimonial ARVIA</title>
+<script>
+// Modo incorporado: quando a calculadora roda dentro do site (iframe), esconde topo, chamada e rodapé próprios
+try{ if(/[?&]embed=1/.test(location.search) || window.self!==window.top) document.documentElement.classList.add('embed'); }catch(e){ document.documentElement.classList.add('embed'); }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap">
@@ -190,6 +194,11 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
 @media (max-width:920px){.mbar{display:block}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+html.embed .top,html.embed .hero,html.embed .cta,html.embed .lgl-foot,html.embed .mbar{display:none!important}
+html.embed body{min-height:0;background:var(--bg)}
+html.embed .app{padding-top:18px}
+html.embed .stage{position:static}
+html.embed .disclaimer{padding-bottom:18px}
 </style>
 
 <div class="wrap">
@@ -579,4 +588,14 @@ details.more summary:focus-visible{outline:2px solid var(--gold);outline-offset:
 })();
 </script>
 
+<script>
+// Informa a altura ao site que incorpora a calculadora, para o quadro crescer sem barra de rolagem
+(function(){
+  if(!document.documentElement.classList.contains('embed') || window.self===window.top) return;
+  var ultima=0;
+  function avisar(){ var b=document.body, cs=getComputedStyle(b); var h=Math.ceil(b.getBoundingClientRect().height + parseFloat(cs.marginTop||0) + parseFloat(cs.marginBottom||0)); if(Math.abs(h-ultima)>2){ ultima=h; try{ parent.postMessage({arviaCalcAltura:h},'*'); }catch(e){} } }
+  if(window.ResizeObserver) new ResizeObserver(avisar).observe(document.body);
+  window.addEventListener('load',avisar); setInterval(avisar,1500); avisar();
+})();
+</script>
 </body></html>
